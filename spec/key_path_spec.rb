@@ -3,6 +3,7 @@ require File.expand_path 'spec_helper.rb', __dir__
 
 # the files we're specifically testing
 require File.expand_path '../lib/key_path/key_path.rb', __dir__
+require File.expand_path '../lib/key_path/string.rb', __dir__
 
 describe 'KeyPath' do
   it 'creates a KeyPath instance from a string' do
@@ -38,5 +39,17 @@ describe 'KeyPath' do
     path = KeyPath::Path.new('item')
 
     path.parent.must_be_nil
+  end
+end
+
+describe 'String' do
+  it 'can create a KeyPath instance from itself' do
+    example_string = 'item.url'
+
+    example_string.to_keypath.wont_be_nil
+    example_string.to_keypath.must_be_kind_of KeyPath::Path
+
+    # around and around we go
+    example_string.to_keypath.to_s.must_equal example_string
   end
 end
