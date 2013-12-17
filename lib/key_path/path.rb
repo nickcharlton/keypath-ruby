@@ -7,6 +7,13 @@ module KeyPath
     def parent
       s = self.to_a
       s.pop
+
+      # there's no parent if it's empty
+      if s == []
+        return nil
+      end
+
+      # otherwise, join them back together and pass back a path
       s.join('.').to_keypath
     end
 
