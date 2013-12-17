@@ -3,7 +3,7 @@ require File.expand_path 'spec_helper.rb', __dir__
 
 # the files we're specifically testing
 require File.expand_path '../lib/key_path/path.rb', __dir__
-require File.expand_path '../lib/key_path/string.rb', __dir__
+require File.expand_path '../lib/string/key_path.rb', __dir__
 
 describe 'KeyPath' do
   it 'creates a KeyPath instance from a string' do
