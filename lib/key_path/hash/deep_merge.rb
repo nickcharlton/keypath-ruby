@@ -10,7 +10,7 @@
 # Copyright::   2007-2008 The Authors
 # License::     MIT License
 # Link::        http://www.simonecarletti.com/
-# Source::      http://gist.github.com/gists/6391/
+# Source::      https://gist.github.com/weppos/6391
 #
 module KeyPath
   module Hash
