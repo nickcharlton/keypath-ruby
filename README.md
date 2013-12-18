@@ -1,5 +1,7 @@
 # keypath-based collection access extensions for Ruby.
 
+[![Build Status](https://secure.travis-ci.org/nickcharlton/keypath-ruby.png?branch=master)](http://travis-ci.org/nickcharlton/keypath-ruby) [![Code Climate](https://codeclimate.com/github/nickcharlton/keypath-ruby.png)](https://codeclimate.com/github/nickcharlton/keypath-ruby) [![Test Coverage](https://coveralls.io/repos/nickcharlton/keypath-ruby/badge.png?branch=master)](https://coveralls.io/r/nickcharlton/keypath-ruby)
+
 This gem allows you to access nested Ruby collections (`Hash`, `Array`, etc) using 
 keypaths.
 
