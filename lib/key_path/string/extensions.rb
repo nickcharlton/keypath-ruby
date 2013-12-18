@@ -13,6 +13,10 @@ module KeyPath
     def is_plural?
       self.singularize != self and self.pluralize == self
     end
+
+    def is_number?
+      true if Float(self) rescue false
+    end
   end
 end
 

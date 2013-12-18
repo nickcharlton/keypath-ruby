@@ -30,6 +30,12 @@ describe 'StringExtensions' do
     %w(words rails dresses businesses).each do |v|
       v.is_singular?.must_equal false
     end
+  end
 
+  it 'can test if a string is actually a number' do
+    '0'.is_number?.must_equal true
+    '1234567890'.is_number?.must_equal true
+
+    'item'.is_number?.must_equal false
   end
 end
