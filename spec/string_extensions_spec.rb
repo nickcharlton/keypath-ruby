@@ -11,4 +11,25 @@ describe 'StringExtensions' do
     # around and around we go
     example_string.to_keypath.to_s.must_equal example_string
   end
+
+  it 'can make a set of strings plural' do 
+    %w(word rail dress business).each do |v|
+      v.is_plural?.must_equal false
+    end
+
+    %w(words rails dresses businesses).each do |v|
+      v.is_plural?.must_equal true
+    end
+  end
+
+  it 'can make a set of string singular' do
+    %w(word rail dress business).each do |v|
+      v.is_singular?.must_equal true
+    end
+
+    %w(words rails dresses businesses).each do |v|
+      v.is_singular?.must_equal false
+    end
+
+  end
 end
