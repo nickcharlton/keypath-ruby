@@ -26,11 +26,30 @@ module KeyPath
     end
 
     def to_collection
+      collection = {}
       s = self.to_a
-    
-      {:item => {
-         :resource_uri => {}
-      }}
+      depth = ''
+
+      s.each_with_index do |e, i|
+        # assemble the key
+        if e.is_number?
+          key = "#{e}"
+        else
+          key = ":#{e}"
+        end
+        depth << "[#{key}]"
+
+        # figure out the correct type to push
+        type = {}
+        if e.is_plural?
+          type = []
+        end
+
+        # evaluate this stage
+        eval "collection#{depth} = #{type}"
+      end
+
+      collection
     end
 
     def inspect
