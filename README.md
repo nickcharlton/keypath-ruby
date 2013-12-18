@@ -37,7 +37,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`KeyPath` is at least two things. First, it's a class (actually, `KeyPath::Path`)
+which represents a path (this is just a string, and has methods to go back and
+forth from it) and secondly a set of class extensions for `Enumerable`, `Hash` and 
+`String` which allow you to use the native collection classes with keypaths.
+
+```ruby
+require 'key_path'
+
+data = {
+    :item => {
+        :url => 'http://nickcharlton.net'
+    }
+}
+
+# fetching a path
+path = KeyPath::Path.new 'item.url'
+data.value_at_keypath(path) #=> 'http://nickcharlton.net'
+
+# finding all `:url` paths in a collection
+data.keypaths_for_nested_key(:url) #=> {item.url => 'http://nickcharlton.net'}
+
+# going back and forth from a string
+path.to_s #=> 'item.url'
+'item.url'.to_keypath #=> #<KeyPath:70096895112220 path=item.url>
+
+# get the parent of a keypath (or nil, if there isn't one)
+path.parent #=> #<KeyPath:70096895221110 path=item>
+```
 
 ## Contributing
 
