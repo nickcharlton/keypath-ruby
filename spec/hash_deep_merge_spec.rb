@@ -1,9 +1,6 @@
 # test helpers
 require File.expand_path 'spec_helper.rb', __dir__
 
-# the files we're specifically testing
-require File.expand_path '../lib/hash/deep_merge.rb', __dir__
-
 describe 'HashDeepMerge' do
   it 'adds methods to the Hash class' do
     hash = {:id => 1}
