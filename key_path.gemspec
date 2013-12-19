@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = KeyPath::VERSION
   spec.authors       = ['Nick Charlton']
   spec.email         = ['nick@nickcharlton.net']
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Keypath-based collection access extensions for Ruby.}
+  spec.summary       = %q{This gem allows you to access nested Ruby collections 
+                          (Hash, Array, etc) using keypaths. E.g.: 'something.item.0'}
   spec.homepage      = ''
   spec.license       = 'MIT'
 
