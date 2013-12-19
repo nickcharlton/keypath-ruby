@@ -9,7 +9,7 @@ For example, say you had a nested data structure like:
 
 ```ruby
 data = {
-    :item_one => {:id => 1, :url => 'http://nickcharlton.net/},
+    :item_one => {:id => 1, :url => 'http://nickcharlton.net/'},
     :something_else => [
         {
             :id => 1,
@@ -19,7 +19,7 @@ data = {
 }
 ```
 
-You could access 'https://github.com/' through: `something_else.0.url`. Basically, 
+You could access "https://github.com/" through: `something_else.0.url`. Basically, 
 this is intended to allow you to manipulate/transform large nested structures that 
 you might get back from a JSON document.
 
@@ -66,6 +66,9 @@ path.to_s #=> 'item.url'
 
 # get the parent of a keypath (or nil, if there isn't one)
 path.parent #=> #<KeyPath:70096895221110 path=item>
+
+# setting a path
+data.set_keypath(path, 'http://github.com/')
 ```
 
 ## Contributing
