@@ -44,4 +44,21 @@ describe 'HashExtensions' do
     keypaths.must_include 'items.0.id'
     keypaths.must_include 'items.1.id'
   end
+
+  it 'can handle walking into an otherwise unknown object' do
+    class ExampleClass
+      def initialize
+        @name = 'Example Class'
+      end
+
+      example = ExampleClass.new
+
+      data = {:items => example}
+
+      keypaths = data.keypaths_for_nested_key(:items)
+
+      keypaths.wont_be_nil
+      keypaths.must_include 'items'
+    end
+  end
 end
