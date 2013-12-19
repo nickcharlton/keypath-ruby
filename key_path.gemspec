@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Keypath-based collection access extensions for Ruby.}
   spec.summary       = %q{This gem allows you to access nested Ruby collections 
                           (Hash, Array, etc) using keypaths. E.g.: 'something.item.0'}
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/nickcharlton/keypath-ruby'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
