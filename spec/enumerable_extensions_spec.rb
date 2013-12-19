@@ -35,4 +35,54 @@ describe 'EnumerableExtensions' do
     hash.value_at_keypath('items.0').must_equal({:id => 1})
   end
 
+  it 'can set a simple value using a keypath string' do
+    source = {:item => {:id => {}}}
+    keypath = 'item.id'
+    value = 1
+
+    source.set_keypath(keypath, value)
+
+    source.value_at_keypath(keypath).must_equal(value)
+  end
+
+  it 'can set a simple value using a KeyPath::Path object' do
+    source = {:item => {:id => {}}}
+    keypath = KeyPath::Path.new('item.id')
+    value = 1
+
+    source.set_keypath(keypath, value)
+
+    source.value_at_keypath(keypath).must_equal(value)
+  end
+
+  it 'can set a string value using a KeyPath::Path object' do
+    source = {:item => {:id => {}}}
+    keypath = KeyPath::Path.new('item.id')
+    value = 'value'
+
+    source.set_keypath(keypath, value)
+
+    source.value_at_keypath(keypath).must_equal(value)
+  end
+
+
+  it 'can set a hash for a path' do
+    source = {:item => {:id => {}}}
+    keypath = KeyPath::Path.new('item')
+    value = {:id => 1}
+
+    source.set_keypath(keypath, value)
+
+    source.value_at_keypath(keypath).must_equal(value)
+  end
+
+  it 'can set a value in a nested array' do
+    source = {:items => [{:id => 1}]}
+    keypath = KeyPath::Path.new('items.1')
+    value = {:id => 2}
+
+    source.set_keypath(keypath, value)
+
+    source.value_at_keypath(keypath).must_equal(value)
+  end
 end

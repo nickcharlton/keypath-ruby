@@ -22,7 +22,31 @@ module Enumerable
   end
 
   def set_keypath(keypath, value)
-    p "#{keypath} => #{value}"
+    # handle both string and KeyPath::Path forms
+    if keypath.is_a?(String)
+      keypath = keypath.to_keypath
+    end
+
+    # create a collection at the keypath
+    collection = keypath.to_collection
+    
+    # set the value in the collection
+    depth = ''
+    keypath.to_a.each do |e|
+      # walk down set and make up the right place to assign
+      if e.is_number?
+        key = "#{e}"
+      else
+        key = ":#{e}"
+      end
+      depth << "[#{key}]"
+    end
+
+    # assign it
+    eval "collection#{depth} = #{value}"
+    
+    # merge the new collection into self
+    self.deep_merge!(collection)
   end
 end
 
