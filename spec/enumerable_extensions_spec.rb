@@ -15,6 +15,14 @@ describe 'EnumerableExtensions' do
     hash.value_at_keypath('id').must_equal 1
   end
 
+  it 'can accept KeyPath::Path objects for keypaths' do
+    hash = {:id => 1}
+    keypath = KeyPath::Path.new('id')
+
+    hash.value_at_keypath(keypath).must_equal 1
+  end
+
+
   it 'can fetch with a nested hash key path' do
     hash = {:item => {:id => 1}}
 

@@ -1,7 +1,11 @@
 module Enumerable
   # see: http://stackoverflow.com/a/7139631/83386
-  def value_at_keypath(dotted_path)
-    parts = dotted_path.split '.', 2
+  def value_at_keypath(keypath)
+    if keypath.is_a?(KeyPath::Path)
+      keypath = keypath.to_s
+    end
+
+    parts = keypath.split '.', 2
     
     # if it's an array, call the index
     if self[parts[0].to_i]
