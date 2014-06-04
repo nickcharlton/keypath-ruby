@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/nickcharlton/keypath-ruby.png?branch=master)](http://travis-ci.org/nickcharlton/keypath-ruby) [![Code Climate](https://codeclimate.com/github/nickcharlton/keypath-ruby.png)](https://codeclimate.com/github/nickcharlton/keypath-ruby) [![Test Coverage](https://coveralls.io/repos/nickcharlton/keypath-ruby/badge.png?branch=master)](https://coveralls.io/r/nickcharlton/keypath-ruby)
 
-This gem allows you to access nested Ruby collections (`Hash`, `Array`, etc) using 
+This gem allows you to access nested Ruby collections (`Hash`, `Array`, etc) using
 keypaths.
 
 For example, say you had a nested data structure like:
@@ -19,15 +19,15 @@ data = {
 }
 ```
 
-You could access "https://github.com/" through: `something_else.0.url`. Basically, 
-this is intended to allow you to manipulate/transform large nested structures that 
+You could access "https://github.com/" through: `something_else.0.url`. Basically,
+this is intended to allow you to manipulate/transform large nested structures that
 you might get back from a JSON document.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'keypath'
+    gem 'key_path'
 
 And then execute:
 
@@ -35,13 +35,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install keypath
+    $ gem install key_path
 
 ## Usage
 
 `KeyPath` is at least two things. First, it's a class (actually, `KeyPath::Path`)
 which represents a path (this is just a string, and has methods to go back and
-forth from it) and secondly a set of class extensions for `Enumerable`, `Hash` and 
+forth from it) and secondly a set of class extensions for `Enumerable`, `Hash` and
 `String` which allow you to use the native collection classes with keypaths.
 
 ```ruby
@@ -82,4 +82,3 @@ data.set_keypath(path, 'http://github.com/')
 ## Author
 
 Copyright (c) 2013 Nick Charlton (<nick@nickcharlton.net>)
-
