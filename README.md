@@ -26,17 +26,11 @@ you might get back from a JSON document.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+`keypath-ruby` isn't (yet) on [RubyGems][], so add the repo to your [Gemfile][]:
 
-    gem 'key_path'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install key_path
+```ruby
+gem 'key_path', :git => 'https://github.com/nickcharlton/keypath-ruby.git'
+```
 
 ## Usage
 
@@ -83,3 +77,6 @@ data.set_keypath(path, 'http://github.com/')
 ## Author
 
 Copyright (c) 2013 Nick Charlton (<nick@nickcharlton.net>)
+
+[RubyGems]: http://rubygems.org/
+[Gemfile]: http://bundler.io/
