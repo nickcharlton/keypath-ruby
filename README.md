@@ -26,7 +26,8 @@ you might get back from a JSON document.
 
 ## Installation
 
-`keypath-ruby` isn't (yet) on [RubyGems][], so add the repo to your [Gemfile][]:
+`keypath-ruby` is on [RubyGems][] as `key_path`. But you can also add the repo
+to your [Gemfile][]:
 
 ```ruby
 gem 'key_path', :git => 'https://github.com/nickcharlton/keypath-ruby.git'
