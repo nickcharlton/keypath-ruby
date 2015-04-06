@@ -61,11 +61,22 @@ describe 'EnumerableExtensions' do
     value = 'value'
 
     source.set_keypath(keypath, value)
-
+    
     source.value_at_keypath(keypath).must_equal(value)
   end
+  
+  
+  it 'can set a string with capital letters' do
+    source = {:item => {:id => {}}}
+    keypath = KeyPath::Path.new('item.id')
+    value = 'VALUE'
 
-
+    source.set_keypath(keypath, value)
+    
+    source.value_at_keypath(keypath).must_equal(value)
+  end
+  
+  
   it 'can set a hash for a path' do
     source = {:item => {:id => {}}}
     keypath = KeyPath::Path.new('item')
