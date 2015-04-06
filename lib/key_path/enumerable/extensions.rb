@@ -43,7 +43,11 @@ module Enumerable
     end
 
     # assign it
-    eval "collection#{depth} = #{value}"
+    if value.is_a? String
+      eval "collection#{depth} = '#{value}'"
+    else
+      eval "collection#{depth} = #{value}"
+    end
     
     # merge the new collection into self
     self.deep_merge!(collection)
