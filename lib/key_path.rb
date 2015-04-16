@@ -8,7 +8,5 @@ require 'key_path/hash/extensions'
 require 'key_path/enumerable/extensions'
 require 'key_path/string/extensions'
 
-
 module KeyPath
-  # Your code goes here...
 end

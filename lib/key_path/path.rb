@@ -1,17 +1,16 @@
 module KeyPath
+  # The class representing a Path in a collection object.
   class Path
-    def initialize(path='')
+    def initialize(path = '')
       @path = path
     end
 
     def parent
-      s = self.to_a
+      s = to_a
       s.pop
 
       # there's no parent if it's empty
-      if s == []
-        return nil
-      end
+      return nil if s == []
 
       # otherwise, join them back together and pass back a path
       s.join('.').to_keypath
@@ -27,10 +26,10 @@ module KeyPath
 
     def to_collection
       collection = {}
-      s = self.to_a
+      s = to_a
       depth = ''
 
-      s.each_with_index do |e, i|
+      s.each do |e|
         # assemble the key
         if e.is_number?
           key = "#{e}"
@@ -41,9 +40,7 @@ module KeyPath
 
         # figure out the correct type to push
         type = {}
-        if e.is_plural?
-          type = []
-        end
+        type = [] if e.is_plural?
 
         # evaluate this stage
         eval "collection#{depth} = #{type}"
@@ -53,7 +50,7 @@ module KeyPath
     end
 
     def inspect
-      "#<#{self.class.name}:#{self.object_id} path=#{@path}>"
+      "#<#{self.class.name}:#{object_id} path=#{@path}>"
     end
   end
 end

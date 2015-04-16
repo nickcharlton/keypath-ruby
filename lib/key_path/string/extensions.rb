@@ -1,17 +1,18 @@
 require 'active_support/inflector'
 
 module KeyPath
+  # Extensions to `String`.
   module StringExtensions
     def to_keypath
       KeyPath::Path.new self
     end
 
     def is_singular?
-      self.pluralize != self and self.singularize == self
+      pluralize != self && singularize == self
     end
 
     def is_plural?
-      self.singularize != self and self.pluralize == self
+      singularize != self && pluralize == self
     end
 
     def is_number?
@@ -20,6 +21,7 @@ module KeyPath
   end
 end
 
+# Mix `StringExtensions` into `String`.
 class String
   include KeyPath::StringExtensions
 end

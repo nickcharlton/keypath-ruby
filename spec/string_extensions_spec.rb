@@ -12,7 +12,7 @@ describe 'StringExtensions' do
     example_string.to_keypath.to_s.must_equal example_string
   end
 
-  it 'can make a set of strings plural' do 
+  it 'can make a set of strings plural' do
     %w(word rail dress business).each do |v|
       v.is_plural?.must_equal false
     end

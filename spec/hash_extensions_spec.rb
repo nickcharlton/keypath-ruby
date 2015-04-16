@@ -3,20 +3,20 @@ require File.expand_path 'spec_helper.rb', __dir__
 
 describe 'HashExtensions' do
   it 'adds methods to the Hash class' do
-    hash = {:id => 1}
+    hash = { id => 1 }
 
     hash.must_respond_to 'keypaths_for_nested_key'
   end
 
   it 'can find keys in a nested hash' do
     data = {
-      :id => 1,
-      :item => {
-        :id => 2,
-        :name => 'an item'
+      id: 1,
+      item: {
+        id: 2,
+        name: 'an item'
       }
     }
-    
+
     keypaths = data.keypaths_for_nested_key(:id)
 
     keypaths.wont_be_nil
@@ -26,14 +26,13 @@ describe 'HashExtensions' do
 
   it 'can find keys in nested array' do
     data = {
-      :id => 1,
-      :items => [{
-        :id => 2,
-        :name => 'an item'
-      },
-      {
-        :id => 3,
-        :name => 'another item'
+      id: 1,
+      items: [{
+        id: 2,
+        name: 'an item'
+      }, {
+        id: 3,
+        name: 'another item'
       }]
     }
 
@@ -46,6 +45,7 @@ describe 'HashExtensions' do
   end
 
   it 'can handle walking into an otherwise unknown object' do
+    # Example class to demonstrate an unknown object.
     class ExampleClass
       def initialize
         @name = 'Example Class'
@@ -53,7 +53,7 @@ describe 'HashExtensions' do
 
       example = ExampleClass.new
 
-      data = {:items => example}
+      data = { items: example }
 
       keypaths = data.keypaths_for_nested_key(:items)
 
