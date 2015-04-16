@@ -3,7 +3,7 @@ require File.expand_path 'spec_helper.rb', __dir__
 
 describe 'HashExtensions' do
   it 'adds methods to the Hash class' do
-    hash = { id => 1 }
+    hash = { id: 1 }
 
     hash.must_respond_to 'keypaths_for_nested_key'
   end
