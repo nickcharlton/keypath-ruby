@@ -1,8 +1,18 @@
+# Send builds to container-based infrastructure
+# http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: false
 language: ruby
+cache:
+- bundler
 rvm:
-    - 2.0.0
-    - 2.1.5
-    - 2.2.0
+  - 2.0
+  - 2.1
+  - 2.2
+  - ruby-head
+matrix:
+  fast_finish: true
+  allow_failures:
+    - rvm: ruby-head
 addons:
     code_climate:
         repo_token: 5e894e29c661b239fb363f409ae1043ae689e05b3169f7eaff50be66cc6b4479
