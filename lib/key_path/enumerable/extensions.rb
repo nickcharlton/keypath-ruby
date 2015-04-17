@@ -23,29 +23,32 @@ module Enumerable
     # handle both string and KeyPath::Path forms
     keypath = keypath.to_keypath if keypath.is_a?(String)
 
-    # create a collection at the keypath
-    collection = keypath.to_collection
+    keypath_parts = keypath.to_a
+    # Return self if path empty
+    return self if keypath_parts.empty?
 
-    # set the value in the collection
-    depth = ''
-    keypath.to_a.each do |e|
-      # walk down set and make up the right place to assign
-      if e.is_number?
-        key = "#{e}"
-      else
-        key = ":#{e}"
-      end
-      depth << "[#{key}]"
+    key = keypath_parts.shift
+    # Just assign value to self when it's a direct path
+    # Remember, this is after calling keypath_parts#shift
+    if keypath_parts.length == 0
+      key = key.is_number? ? Integer(key) : key.to_sym
+
+      self[key] = value
+      return self
     end
 
-    # assign it
-    if value.is_a? String
-      eval "collection#{depth} = '#{value}'"
+    # keypath_parts.length > 0
+    # Remember, this is after calling keypath_parts#shift
+    collection = if key.is_number?
+      Array.new
     else
-      eval "collection#{depth} = #{value}"
+      Hash.new
     end
+
+    # Remember, this is after calling keypath_parts#shift
+    collection.set_keypath(keypath_parts.join('.'), value)
 
     # merge the new collection into self
-    self.deep_merge!(collection)
+    self[key] = collection
   end
 end
