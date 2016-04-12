@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0
+
+* Bumps the development version of Ruby to 2.3.0.
+* Allows for activesupport 5.0 (@majioa).
+
 ## 1.1.0
 
 * (5a95e95) Removes the usage of `eval`. (@PikachuEXE)
