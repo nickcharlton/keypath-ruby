@@ -56,7 +56,7 @@ module Enumerable
     return delete_at_keypath(keypath, true)
   end
 
-  def delete_at_keypath(keypath, wild_card_allowed = false)
+  def delete_at_keypath(keypath, wildcard_allowed = false)
     keypath = keypath.to_s if keypath.is_a?(KeyPath::Path)
 
     parts = keypath.split '.', 2
@@ -75,7 +75,7 @@ module Enumerable
     # if it's an array, call the index
     if self.is_a? Array
       match = index ? self[index] : nil
-    elsif wild_card_allowed && parts[0] == '*'
+    elsif wildcard_allowed && parts[0] == '*'
       raise "wildcard should only be applied to hash keys; (for array, please skip the key)" unless self.instance_of?(Hash)
       match = self.values
     else
@@ -84,10 +84,9 @@ module Enumerable
 
     return nil unless match.instance_of?(Hash) || match.instance_of?(Array)
     if match.instance_of?(Array) and (false if Integer((parts[1].split '.',2).first) rescue true)
-       return match.collect {|m| m.delete_at_keypath(parts[1], wild_card_allowed)}
+       return match.collect {|m| m.delete_at_keypath(parts[1], wildcard_allowed)}
     end
 
-    return match.delete_at_keypath(parts[1], wild_card_allowed)
+    return match.delete_at_keypath(parts[1], wildcard_allowed)
   end
-
 end
