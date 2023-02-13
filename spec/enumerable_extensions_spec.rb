@@ -99,7 +99,7 @@ describe 'EnumerableExtensions' do
 
     expected = {id: 1, metadata: {value:"v"}}
     source.delete_at_keypath("metadata.name")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
 
     source.delete_at_keypath("id")
     _(source).must_equal({ metadata: { value: "v" } })
