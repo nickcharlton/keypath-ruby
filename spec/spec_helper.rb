@@ -1,6 +1,3 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 # test framework
 require 'minitest/autorun'
 require 'minitest/pride'
