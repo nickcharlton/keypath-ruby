@@ -102,41 +102,41 @@ describe 'EnumerableExtensions' do
     source.must_equal(expected)
 
     source.delete_at_keypath("id")
-    source.must_equal({metadata: {value: "v"} })
+    _(source).must_equal({ metadata: { value: "v" } })
   end
 
   it 'can delete by path with array index' do
     source = { items: [{ id: 1 }, {id: 2}, {id: 3}]}
     expected = {items: [{id: 1}, {id: 3}]}
     source.delete_at_keypath("items.1")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
   end
 
   it 'can delete by each path if the matched is an array of elements' do
     source = {items: [{ metadata: {name:"n1", value: "v1"} }, { metadata: {name:"n2", value:"v2"} }, { metadata: {name:"n3", value:"v3"} }]}
     expected = {items: [{ metadata: {name:"n1"} }, { metadata: {name:"n2"} }, { metadata: {name:"n3"} }]}
     source.delete_at_keypath("items.metadata.value")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
   end
 
   it 'can untouch the hash when keypath is not matching anything' do
     source = { items: [{ id: 1 }, {id: 2}, {id: 3}]}
     expected = { items: [{ id: 1 }, {id: 2}, {id: 3}]}
     source.delete_at_keypath("items.metadata.value")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
 
     source = [1,2,3]
     expected = [1,2,3]
     source.delete_at_keypath("items.metadata.value")
     source.delete_at_keypath("items")
     source.delete_at_keypath("20")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
   end
 
   it 'can delete by path with wildcard as hash index' do
     source = { items: {year2007: {price:1, id:1}, year2015:{price:2, id:2}}}
     expected = {items: {year2007: {id:1}, year2015:{id:2} } }
     source.delete_at_keypath_with_wildcard("items.*.price")
-    source.must_equal(expected)
+    _(source).must_equal(expected)
   end
 end
